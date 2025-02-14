@@ -67,7 +67,9 @@ public struct ExpectJsonEqualMacro: ExpressionMacro {
             let expectedDict = jsonToDictionary(\(expected))
             let actualDict = jsonToDictionary(\(actual))
                 
-            #expect(expectedDict == actualDict)
+            if (expectedDict != actualDict) {
+                fatalError("JSON mismatch. \(expected) not equal to \(actual)")
+            }
         """
     }
 }
