@@ -1,8 +1,18 @@
 import JsonAssertions
 
-let a = 17
-let b = 25
+let expectedJson = """
+    {
+        "name": "John",
+        "age": 30
+    }
+    """
+    
+    let actualJson = """
+    {
+        "age": 30,
+        "name": "John"
+    }
+    """
 
-let (result, code) = #stringify(a + b)
+#expectJsonEqual(expectedJson, actualJson)
 
-print("The value \(result) was produced by the code \"\(code)\"")
